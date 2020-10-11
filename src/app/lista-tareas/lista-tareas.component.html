@@ -1,0 +1,98 @@
+<div class="row" style="margin-left: auto;">
+  <table class="table table-striped">
+    <thead class="tareasTableHead">
+      <tr>
+        <th scope="col" sortable="id">ID</th>
+        <th scope="col" sortable="contenido">Contenido</th>
+        <th scope="col" sortable="completada">Completada?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let tarea of tareas">
+        <td>
+          {{tarea._id}}
+        </td>
+        <td>
+          {{ tarea.contenido }}
+        </td>
+        <td>
+          <div *ngIf="tarea.completada">
+            Completada
+          </div>
+          <div *ngIf="!tarea.completada">
+            Pendiente
+          </div>
+        </td>
+        <td>
+          <button
+          class="btn btn-primary"
+          type="button"
+          (click)="deleteTarea(tarea._id)"
+        >
+          Borrar
+        </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin-left: 20px;">
+  <div class="row" style="margin-left: auto;">
+    <label>Datos Tarea</label>
+  </div>
+  <form [formGroup]="editForm">
+    <div class="row">
+      <div class="col-3">
+        <label>ID Tarea</label>
+        <input
+          formControlName="id"
+          class="form-control"
+          placeholder="ID tarea"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <label>Contenido</label>
+        <input
+          formControlName="contenido"
+          class="form-control"
+          placeholder="Contenido tarea"
+        />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-1" style="margin-top: 5px;">
+        <label>Completada?</label>
+      </div>
+      <div class="col-1" style="margin-top: 5px;">
+        <input 
+            type="checkbox"
+            class="form-control"
+            formControlName="completada"
+          />
+      </div>
+    </div>
+    <div class="row" style="margin-top: 5px;">
+      <div class="col-1">
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="createTarea()"
+        >
+          Añadir
+        </button>
+      </div>
+      <div class="col-1">
+        <button
+          class="btn btn-primary"
+          type="button"
+          (click)="updateTarea()"
+        >
+          Actualizar
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
