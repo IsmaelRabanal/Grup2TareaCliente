@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TareaDto } from '../common/tarea.dto';
 import { UpsertTareaDto } from '../common/upsert-tarea.dto';
-import { TareasService } from '../services/patients.service';
+import { TareasService } from '../services/tareas.service';
 
 @Component({
   selector: 'app-lista-tareas',
